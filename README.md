@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5625ee22-c316-424b-a2ea-b6766dc2dc94/deploy-status)](https://app.netlify.com/sites/lostintown/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0b1ba7d-e64b-4692-991c-2822fccdf433/deploy-status)](https://app.netlify.com/sites/lostintown/deploys)
 
 # Lost In Town
 
