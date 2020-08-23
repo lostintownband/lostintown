@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5625ee22-c316-424b-a2ea-b6766dc2dc94/deploy-status)](https://app.netlify.com/sites/lostintown/deploys)
+
 # Lost In Town
 
 ## Project setup
