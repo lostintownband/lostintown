@@ -1,19 +1,26 @@
+/* eslint-disable max-len */
 <template>
   <div class="home">
     <div v-if="!webSite">
-      <h1>Lost in Town</h1>
-      <div class="spotify-song">
+      <!-- h1>Lost in Town</h1 -->
+      <div class="back-img">
         <b-img :src="require('../assets/lost in town font.jpg')"></b-img>
-        <div class="songbox">
-          <audio
-            controls
-            src="../assets/ELVIS MASTER 44.1 16BITS GOOD .wav">
-              Your browser does not support the
-              <code>audio</code> element.
-          </audio>
-        </div>
       </div>
       <div class="container-mobile">
+        <div class="spotify-song">
+          <div class="songbox">
+            <b-img
+              :src="require('../assets/lost in town font.jpg')"
+              style="width: 30%;"
+            ></b-img>
+            <audio
+              controls
+              src="../assets/ELVIS MASTER 44.1 16BITS GOOD .wav">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+          </div>
+        </div>
         <div class="btn-link">
           <div class="partOneLink">
             <b-row>
@@ -21,15 +28,25 @@
                 class="icon-link"
                 @click="linkYoutube"
               >
-                <b-img :src="require('../assets/youtube.png')"></b-img>
-                <p>YouTube</p>
+                <!-- b-img :src="require('../assets/youtube.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'youtube']" />
+                  </span>
+                  YouTube
+                </p>
               </b-col>
               <b-col
                 class="icon-link"
                 @click="linkFacebook"
               >
-                <b-img :src="require('../assets/facebook.png')"></b-img>
-                <p>Facebook</p>
+                <!-- b-img :src="require('../assets/facebook.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'facebook-square']" />
+                  </span>
+                  Facebook
+                </p>
               </b-col>
             </b-row>
             <b-row>
@@ -37,15 +54,25 @@
                 class="icon-link"
                 @click="linkSpotify"
               >
-                <b-img :src="require('../assets/spotify.png')"></b-img>
-                <p>Spotify</p>
+                <!-- b-img :src="require('../assets/spotify.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'spotify']" />
+                  </span>
+                  Spotify
+                </p>
               </b-col>
               <b-col
                 class="icon-link"
                 @click="linkInstagram"
               >
-                <b-img :src="require('../assets/instagram.png')"></b-img>
-                <p>Instagram</p>
+                <!-- b-img :src="require('../assets/instagram.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'instagram']" />
+                  </span>
+                  Instagram
+                </p>
               </b-col>
             </b-row>
             <b-row>
@@ -53,15 +80,25 @@
                 class="icon-link"
                 @click="linkApple"
               >
-                <b-img :src="require('../assets/apple.png')"></b-img>
-                <p>Apple Music</p>
+                <!-- b-img :src="require('../assets/apple.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'apple']" />
+                  </span>
+                  Apple Music
+                </p>
               </b-col>
               <b-col
                 class="icon-link"
                 @click="linkApple"
               >
-                <b-img :src="require('../assets/apple.png')"></b-img>
-                <p>Space-X</p>
+                <!-- b-img :src="require('../assets/apple.png')"></b-img -->
+                <p>
+                  <span>
+                    <font-awesome-icon :icon="['fab', 'apple']" />
+                  </span>
+                  Space-X
+                </p>
               </b-col>
             </b-row>
           </div>
@@ -80,12 +117,16 @@
   </div>
 </template>
 
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
 export default {
   data: () => ({
     webSite: false,
     youTube: '',
   }),
+  mounted() {
+    this.test();
+  },
   methods: {
     linkYoutube() {
       window.open('https://www.youtube.com/channel/UCZ7JcnkKEDBxr9FsJqX7S-A');
@@ -104,6 +145,37 @@ export default {
     },
     showWork() {
       this.webSite = !this.webSite;
+    },
+    test() {
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        const partOne = 'BQDW8Y1jf5gN1VlRpnEtqdLLhGVd-z-lCKphrWCy0o2VQxUHfoURmX';
+        const partTwo = 'sJgDybt8LtDXblOjlvadOuYajMEZFxuiSJfKvrrE49X-aQR338JVLl';
+        const partThree = 'cD1VqooEYerMT8-FmltdIE57xzEX8SMr4rcTNN-uH97LrSBw1pD';
+        const partFour = 'P3EtOOKWaRc_-2UmTtxtDVj0';
+        const token = `${partOne}${partTwo}${partThree}${partFour}`;
+        console.log(token);
+        const player = new Spotify.Player({
+          name: 'Web Playback SDK Quick Start Player',
+          getOAuthToken: (cb) => { cb(token); },
+        });
+        // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
+        // Playback status updates
+        player.addListener('player_state_changed', (state) => { console.log(state); });
+        // Ready
+        player.addListener('ready', ({ deviceId }) => {
+          console.log('Ready with Device ID', deviceId);
+        });
+        // Not Ready
+        player.addListener('not_ready', ({ deviceId }) => {
+          console.log('Device ID has gone offline', deviceId);
+        });
+        // Connect to the player!
+        player.connect();
+      };
     },
   },
 };
@@ -125,11 +197,32 @@ export default {
   .row {
     margin: 0;
   }
+  .back-img {
+    position: relative;
+    z-index: 1;
+  }
   img {
-    width: 30%;
+    width: 90%;
+    margin-bottom: 30px;
+    margin-top: -180px;
+  }
+  .container-mobile {
+    position: relative;
+    z-index: 1;
+    margin-top: -135px;
+    background-color: black;
+    padding-top: 30px;
+    .spotify-song {
+      margin-top: 150px;
+    }
   }
   p {
     color: white;
+    border: 1px solid;
+    border-radius: 25px;
+    span {
+      margin-right: 10px;
+    }
   }
   button {
     background-color: transparent;
