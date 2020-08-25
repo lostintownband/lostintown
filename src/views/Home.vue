@@ -137,7 +137,7 @@ export default {
     background-color: black;
     padding-top: 10px;
     .spotify-song {
-      margin: 20px 10px;
+      margin: 35px 10px;
     }
   }
   p {
@@ -156,7 +156,7 @@ export default {
     border: none;
   }
   .site-link {
-    margin: 20px 10px;
+    margin: 30px 10px;
     button {
       width: 50%;
       border: 1px solid black;
@@ -172,6 +172,8 @@ export default {
   .btn-link {
     display: flex;
     justify-content: space-evenly;
+    line-height: 29px;
+    margin-top: 35px;
     /* p {
       text-align: right;
       padding-right: 10px;
