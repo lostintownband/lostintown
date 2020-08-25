@@ -2,7 +2,6 @@
 <template>
   <div class="home">
     <div v-if="!webSite">
-      <!-- h1>Lost in Town</h1 -->
       <div class="back-img">
         <b-img :src="require('../assets/lost in town font.jpg')"></b-img>
       </div>
@@ -21,19 +20,19 @@
         </div>
         <div class="btn-link">
           <div class="partOne">
-            <p>
+            <p @click="linkYoutube">
               <span>
                 <font-awesome-icon :icon="['fab', 'youtube']" />
               </span>
               YouTube
             </p>
-            <p>
+            <p @click="linkFacebook">
               <span>
                 <font-awesome-icon :icon="['fab', 'facebook-square']" />
               </span>
               Facebook
             </p>
-            <p>
+            <p @click="linkSpotify">
               <span>
                 <font-awesome-icon :icon="['fab', 'spotify']" />
               </span>
@@ -41,13 +40,13 @@
             </p>
           </div>
           <div class="partTwo">
-            <p>
+            <p @click="linkInstagram">
               <span>
                 <font-awesome-icon :icon="['fab', 'instagram']" />
               </span>
               Instagram
             </p>
-            <p>
+            <p @click="linkApple">
               <span>
                 <font-awesome-icon :icon="['fab', 'apple']" />
               </span>
@@ -62,14 +61,18 @@
           </div>
         </div>
         <div class="site-link">
-          <b-button @click="showWork">Visite Ours WebSite ?</b-button>
+          <b-button @click="showWork">Visite Ours WebSite</b-button>
+        </div>
+        <div class="footer">
+          <font-awesome-icon icon="envelope-square" />
+          <small> lostintownband@gmail.com</small>
         </div>
       </div>
     </div>
     <div v-else>
       <h1>Working Progress !!</h1>
       <div class="site-link">
-        <b-button @click="showWork">Go Back To All Links ?</b-button>
+        <b-button @click="showWork">Go Back To All Links</b-button>
       </div>
     </div>
   </div>
@@ -174,6 +177,7 @@ export default {
     justify-content: space-evenly;
     line-height: 29px;
     margin-top: 35px;
+    cursor: pointer;
     /* p {
       text-align: right;
       padding-right: 10px;
@@ -188,6 +192,9 @@ export default {
     .partTwo {
       width: 42%;
     }
+  }
+  .footer {
+    color: white;
   }
 }
 </style>

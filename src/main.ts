@@ -6,6 +6,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faUserSecret,
+  faEnvelopeSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faInstagram,
@@ -28,6 +29,7 @@ library.add(
   faFacebookSquare,
   faSpotify,
   faApple,
+  faEnvelopeSquare,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
