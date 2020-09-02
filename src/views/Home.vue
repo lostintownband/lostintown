@@ -65,7 +65,9 @@
         </div>
         <div class="footer">
           <font-awesome-icon icon="envelope-square" />
-          <small> lostintownband@gmail.com</small>
+          <small><a :href="
+            'mailto:lostintownband@gmail.com?subject=LostInTown-webSite'
+          "> lostintownband@gmail.com</a></small>
         </div>
       </div>
     </div>
@@ -195,6 +197,9 @@ export default {
   }
   .footer {
     color: white;
+    a {
+      color: white !important;
+    }
   }
 }
 </style>
