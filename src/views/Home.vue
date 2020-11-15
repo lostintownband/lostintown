@@ -32,12 +32,6 @@
               </span>
               Facebook
             </p>
-            <p @click="linkSpotify">
-              <span>
-                <font-awesome-icon :icon="['fab', 'spotify']" />
-              </span>
-              Spotify
-            </p>
           </div>
           <div class="partTwo">
             <p @click="linkInstagram">
@@ -52,14 +46,17 @@
               </span>
               Apple Music
             </p>
-            <p>
-              <span>
-                <font-awesome-icon :icon="['fab', 'apple']" />
-              </span>
-              Space-X
-            </p>
           </div>
         </div>
+        <div class="text-center" style="width: 45%;
+          margin: 0 auto;">
+            <p @click="linkSpotify">
+              <span>
+                <font-awesome-icon :icon="['fab', 'spotify']" />
+              </span>
+              Spotify
+            </p>
+          </div>
         <div class="site-link">
           <b-button @click="showWork">Visite Ours WebSite</b-button>
         </div>
